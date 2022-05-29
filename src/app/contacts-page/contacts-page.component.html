@@ -1,0 +1,144 @@
+<h2>Contacts-Form</h2><hr>
+<form class="row g-3" (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="col-md-4">
+      <label for="inputfirstname" class="form-label">First Name<span style="color: red;">*</span></label>
+      <input type="text" class="form-control"
+       id="inputfirstname" placeholder="Enter First Name"
+       ngModel name="firstname" required>
+      </div>
+      <div class="col-md-4">
+        <label for="inputlastname" class="form-label">Last Name<span style="color: red;">*</span></label>
+      <input type="text" class="form-control"
+       id="inputlastname" placeholder="Enter Last Name"
+        ngModel name="lastname" required>
+      </div>
+      <div class="col-md-4">
+        <label for="inputcompanyname" class="form-label">Company Name <span style="color: red;">*</span></label>
+        <input type="text" class="form-control"
+         id="inputcompany" placeholder="Enter Company Name"
+          ngModel name="companyname" required>
+    </div>  
+<div class="col-xs-12">
+    <div class="col-md-4">
+        <label for="inputjobtitle" class="form-label"style=>Job Title</label>
+          <input type="text" class="form-control" id="inputjobtitle" placeholder="Enter Job title"ngModel name="jobtitle">
+    </div>
+</div>
+    
+
+<div class="col-md-4">
+    <label for="inputemailname" class="form-label">Email 1 <span style="color: red;">*</span></label>
+      <input type="email" class="form-control"
+       id="inputemailname" placeholder="testemail@gmail.com"
+        ngModel name="email1" required 
+        email
+        #email1="ngModel"
+        pattern="[\w\.=-]+@[\w\.-]+\.[\w]{2,4}">
+        <span class="help-block" *ngIf="!email1.valid && email1.touched"></span>   
+</div>
+<div class="col-md-4">
+    <label for="inputemailname2" class="form-label">Email 2</label>
+      <input type="email" class="form-control"
+       id="inputemailname2" placeholder="testemail@gmail.com"
+       ngModel name="email2"
+       email 
+       #email2="ngModel"
+       pattern="[\w\.=-]+@[\w\.-]+\.[\w]{2,4}">
+       <span class="help-block" *ngIf="!email2.valid && email2.touched">Please enter a valid email Id!</span>   
+</div>
+<div class="col-md-4">
+    <label for="inputcompanyphone" class="form-label">Company Phone</label>
+        <input type="text" class="form-control" id="inputcnyphone" placeholder="Enter Company phone"ngModel name="companyphone">
+</div>
+
+    <div class="col-4">
+        <label for="inputmobilenumber" class="form-label">Mobile Phone</label>
+        <input type="text" class="form-control" id="inputmobilenumber" placeholder="Enter mobile phone"ngModel name="mobilephone">
+    </div>
+    <div class="col-md-4" >
+        <label for="inputtype" class="form-label">Type <span style="color: red;">*</span></label>
+        <select type="text" class=" form-control"
+        id="inputtype" placeholder="Select from Dropdown"
+        [ngModel]="'Client'"
+         name="type" required>   
+        <option value="Client">Client</option> 
+        <option value="Vendor-P1">Vendor-P1</option>
+        <option value="Vendor-P2">Vendor-P2</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+
+<div class="col-md-4    ">
+    <label for="inputpriority" class="form-label">Priority</label>
+    <select type="text" class="form-control" 
+    id="inputpriority" placeholder="Select from Dropdown"
+    [ngModel]="'Normal'" name="priority">
+    <option value="Normal">Normal</option>
+    <option value="Low">Low</option>
+    <option value="High">High</option>
+    </select>
+
+</div>
+<div class="col-md-4">
+    <label for="inputemailname2" class="form-label">Account Manager <span style="color: red;">*</span></label>
+    <select type="text" class="form-control"
+     id="inputemailname2" placeholder="Select Account Manager from Dropdown"
+     [ngModel]="'Kevin DSouza'" name="accountmanager" required>
+     <option value="Kevin DSouza">Kevin D'Souza</option>
+     <option value="Khushboo Gawale">Khushboo Gawale</option>
+     <option value="Anoop Mulay">Anoop Mulay</option>
+     <option value="Sugandha Nimkar">Sugandha Nimkar</option>
+</select>
+</div>
+<div class="col-md-4">
+     <label for="inputcomweburl" class="form-label">Web Page</label>
+    <input type="text" class="form-control" id="inputweburl" placeholder="Enter Web Url" ngModel name="webpage">
+</div>
+
+<div class="col-md-4"><div class="form-check">
+    <input class="form-check-input" type="checkbox" id="gridCheck" ngModel name="sendhotlist">
+    <label class="form-check-label" for="gridCheck">
+      Send hot list
+    </label>
+  </div></div>
+<div class="col-md-4">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck"ngModel name="sendrequirementlist">
+        <label class="form-check-label" for="gridCheck">
+          Send requirement list
+        </label>
+      </div>
+</div>
+
+<div class="col-md-4"></div>
+<div class="col-md-4">
+    <button type="submit"
+     class="btn btn-primary"
+      style="margin-right:10px"
+      [disabled]="!form.valid"
+      >Submit</button>
+    <button type="button" class="btn btn-danger" (click)="onReset()">Clear</button>     
+</div>   
+</form>
+
+<hr>
+<div class="row" *ngIf="submitted">
+    <h4>Contacts:</h4>
+<div class="row" *ngFor="let contact of contacts">
+    
+        <!-- <div class="col-md-"><p>First Name:<span>{{contact.firstname}}</span></p></div>
+        <div class="col-md-3"><p>Last Name:<span>{{contact.lastname}}</span></p></div>
+        <div class="col-md-3"><p>Company Name:<span>{{contact.companyname}}</span></p></div>
+        <div class="col-md-3"><p>Job Title:<span>{{contact.jobtitle}}</span></p></div> -->
+        <div class="col-xs-12">
+            <p>First Name: <span>{{contact.firstname}}&emsp;</span> Last Name: <span>{{contact.lastname}}&ensp;</span> Company Name: <span>{{contact.companyname}}&emsp;</span>
+            Job Title: <span>{{contact.jobtitle}}&emsp;</span>Email 1: <span>{{contact.email1}}&emsp;</span> Email 2: <span>{{contact.email2}}&emsp;</span>Company Phone: <span>{{contact.companyphone}}&emsp;</span>
+        Mobile Phone: <span>{{contact.mobilephone}}&emsp;</span>Type: <span>{{contact.type}}&emsp;</span>Priority: <span>{{contact.priority}}&emsp;</span>Account Manager: <span>{{contact.accountmanager}}&emsp;</span>
+    Web Page: <span>{{contact.webpage}}&emsp;</span>Send Hot List: <span>{{contact.sendhotlist}}&emsp;</span>Send Requirement List: <span>{{contact.sendrequirementlist}}</span></p>
+        </div>
+    
+</div>
+</div>
+
